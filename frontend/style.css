@@ -1,0 +1,544 @@
+/* ============================================================
+   CSS Custom Properties
+   ============================================================ */
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface-2: #222222;
+  --border: #2a2a2a;
+  --accent: #ff0000;
+  --accent-dim: #cc0000;
+  --text-primary: #f1f1f1;
+  --text-muted: #aaaaaa;
+  --success: #1db954;
+  --error: #ff4444;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.logo-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.logo-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.logo-tagline {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ============================================================
+   Main
+   ============================================================ */
+main {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* ============================================================
+   Converter Card
+   ============================================================ */
+.converter-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 560px;
+}
+
+/* ============================================================
+   URL Input Section
+   ============================================================ */
+.url-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.url-input {
+  width: 100%;
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.875rem 2.75rem 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 200ms ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.url-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.url-input:focus {
+  border-color: var(--accent);
+}
+
+.url-input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.validation-icon {
+  position: absolute;
+  right: 0.875rem;
+  font-size: 1rem;
+  line-height: 1;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.validation-icon.valid::before {
+  content: '✓';
+  color: var(--success);
+}
+
+.validation-icon.invalid::before {
+  content: '✕';
+  color: var(--error);
+}
+
+/* ============================================================
+   Preview Section
+   ============================================================ */
+.preview-section {
+  margin-top: 1.5rem;
+}
+
+/* Skeleton Loader */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-2) 25%,
+    #2e2e2e 50%,
+    var(--surface-2) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+.skeleton-loader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skeleton-thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+}
+
+.skeleton-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+.skeleton-title {
+  height: 1rem;
+  width: 80%;
+  border-radius: 4px;
+}
+
+.skeleton-duration {
+  height: 0.75rem;
+  width: 25%;
+  border-radius: 4px;
+}
+
+/* Preview Content */
+.preview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.thumbnail-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--surface-2);
+}
+
+.preview-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.preview-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.preview-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.duration-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  background-color: var(--surface-2);
+  padding: 0.1875rem 0.5rem;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+/* ============================================================
+   Action Section
+   ============================================================ */
+.action-section {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Convert Button */
+.convert-btn {
+  width: 100%;
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background-color 200ms ease, opacity 200ms ease, transform 100ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.convert-btn:hover:not(:disabled) {
+  background-color: var(--accent-dim);
+}
+
+.convert-btn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.convert-btn:disabled,
+.convert-btn[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Loading spinner inside button */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-loading .btn-spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+.btn-spinner {
+  display: none;
+}
+
+/* Status Message */
+.status-message {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  min-height: 1.25rem;
+  transition: opacity 200ms ease;
+}
+
+/* ============================================================
+   Result Icons (shared)
+   ============================================================ */
+.result-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.875rem;
+}
+
+.result-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================================
+   Success Section
+   ============================================================ */
+.success-section {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.success-icon {
+  background-color: rgba(29, 185, 84, 0.15);
+  color: var(--success);
+}
+
+.result-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.success-title {
+  color: var(--success);
+}
+
+/* Outlined "Converter outro" button */
+.btn-outline {
+  display: inline-block;
+  background-color: transparent;
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.625rem 1.25rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 0, 0, 0.08);
+}
+
+.btn-outline:active {
+  background-color: rgba(255, 0, 0, 0.15);
+}
+
+/* ============================================================
+   Error Section
+   ============================================================ */
+.error-section {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.error-icon {
+  background-color: rgba(255, 68, 68, 0.15);
+  color: var(--error);
+}
+
+.error-message {
+  font-size: 0.9375rem;
+  color: var(--error);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   Utility: Hidden
+   ============================================================ */
+.hidden {
+  display: none !important;
+}
+
+/* ============================================================
+   Section Transitions
+   ============================================================ */
+.preview-section,
+.success-section,
+.error-section {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.preview-section.entering,
+.success-section.entering,
+.error-section.entering {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* ============================================================
+   Media Query: Mobile (max-width 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  header {
+    padding: 1.25rem 1rem;
+  }
+
+  main {
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .converter-card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 1.25rem 1rem;
+    max-width: 100%;
+  }
+
+  .logo-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 0.875rem;
+  }
+
+  .logo-title {
+    font-size: 1.1rem;
+  }
+
+  .convert-btn {
+    font-size: 0.8125rem;
+  }
+}
