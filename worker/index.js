@@ -10,7 +10,7 @@ export default {
   async fetch(request, env) {
     // CORS headers — Allow-Origin will be updated post-deploy
     const corsHeaders = {
-      'Access-Control-Allow-Origin': '*',  // Update to GitHub Pages URL post-deploy
+      'Access-Control-Allow-Origin': 'https://luanchequetto.github.io',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     }
