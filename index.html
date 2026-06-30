@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube to MP3 Converter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo-circle">YT</div>
+      <div class="logo-text">
+        <span class="logo-title">MP3 Converter</span>
+        <span class="logo-tagline">Cole a URL. Receba o MP3.</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="converter-card">
+
+      <!-- URL Input Section -->
+      <section class="url-section">
+        <label class="input-label" for="url-input">URL DO YOUTUBE</label>
+        <div class="input-wrapper">
+          <input
+            type="url"
+            id="url-input"
+            class="url-input"
+            placeholder="https://youtube.com/watch?v=..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="validation-icon" id="validation-icon" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <!-- Preview Section -->
+      <section id="preview-section" class="preview-section hidden">
+        <!-- Skeleton Loader -->
+        <div class="skeleton-loader" id="skeleton-loader">
+          <div class="skeleton skeleton-thumbnail"></div>
+          <div class="skeleton-meta">
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-duration"></div>
+          </div>
+        </div>
+        <!-- Preview Content -->
+        <div class="preview-content" id="preview-content" style="display:none;">
+          <div class="thumbnail-wrapper">
+            <img id="preview-thumbnail" class="preview-thumbnail" src="" alt="Video thumbnail" />
+          </div>
+          <div class="preview-meta">
+            <h3 id="preview-title" class="preview-title"></h3>
+            <span id="preview-duration" class="duration-badge"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Action Section -->
+      <section class="action-section">
+        <button
+          type="button"
+          id="convert-btn"
+          class="convert-btn"
+          disabled
+          aria-disabled="true"
+        >
+          Converter para MP3
+        </button>
+        <div
+          id="status-message"
+          class="status-message"
+          role="status"
+          aria-live="polite"
+        ></div>
+      </section>
+
+      <!-- Success Section -->
+      <section id="success-section" class="success-section hidden" aria-hidden="true">
+        <div class="result-icon success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <p class="result-title success-title">Download iniciado!</p>
+        <button type="button" id="convert-another-btn" class="btn-outline">
+          Converter outro
+        </button>
+      </section>
+
+      <!-- Error Section -->
+      <section id="error-section" class="error-section hidden" aria-hidden="true">
+        <div class="result-icon error-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </div>
+        <p id="error-message" class="error-message"></p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Suportado por Cloudflare Workers + RapidAPI</p>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
