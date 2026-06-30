@@ -340,11 +340,16 @@ function setState(state, payload = {}) {
       announceStatus('Validando URL...');
       break;
 
-    case STATES.PREVIEWING:
+    case STATES.PREVIEWING: {
       urlInput.disabled = false;
       show(previewSection);
+      const sk = document.getElementById('skeleton-loader');
+      const pc = document.getElementById('preview-content');
+      if (sk) sk.style.display = '';
+      if (pc) pc.style.display = 'none';
       announceStatus('Carregando informações do vídeo...');
       break;
+    }
 
     case STATES.PREVIEW_OK:
       urlInput.disabled = false;
@@ -401,16 +406,19 @@ function setState(state, payload = {}) {
  * @param {{title: string, thumbnail_url: string, author_name: string}} preview
  */
 function renderPreview(preview) {
-  const thumbEl  = document.getElementById('preview-thumbnail');
-  const titleEl  = document.getElementById('preview-title');
-  const authorEl = document.getElementById('preview-author');
+  const skeletonEl = document.getElementById('skeleton-loader');
+  const contentEl  = document.getElementById('preview-content');
+  const thumbEl    = document.getElementById('preview-thumbnail');
+  const titleEl    = document.getElementById('preview-title');
 
   if (thumbEl) {
     thumbEl.src = preview.thumbnail_url || '';
     thumbEl.alt = preview.title ? `Thumbnail: ${preview.title}` : 'Video thumbnail';
   }
-  if (titleEl)  titleEl.textContent  = preview.title       || '';
-  if (authorEl) authorEl.textContent = preview.author_name || '';
+  if (titleEl) titleEl.textContent = preview.title || '';
+
+  if (skeletonEl) skeletonEl.style.display = 'none';
+  if (contentEl)  contentEl.style.display  = '';
 }
 
 // ---------------------------------------------------------------------------
